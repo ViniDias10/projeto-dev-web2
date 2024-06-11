@@ -100,6 +100,53 @@
         </div>
     </div>
 
+
+    <div id="popup-editar" class="popup" style="display: none;">
+        <div class="popup-content">
+            <span class="close" onclick="fecharPopupEditar();">&times;</span>
+            <h2>Editar Ingresso</h2>
+            <form id="form-editar">
+                <label for="editar-partida">Partida:</label>
+                <select name="partida" id="editar-partida" required>
+                    <option value="Vasco X Fortaleza - Dia 12/06/2024 ás 19:00 (São Januário)">Vasco X Fortaleza - Dia 12/06/2024 ás 19:00 (São Januário)</option>
+                    <option value="Vasco X Cruzeiro - Dia 25/06/2024 ás 21:30 (São Januário)">Vasco X Cruzeiro - Dia 25/06/2024 ás 21:30 (São Januário)</option>
+                </select><br>
+                <div class="centralizar">
+                    <label for="editar-arqInteira">Arquibancada | Inteira: R$ 80,00</label>
+                    <div class="quantity-container">
+                        <button type="button" onclick="changeQuantity('editar-arqInteira', -1)">-</button>
+                        <input type="number" id="editar-arqInteira" name="arqInteira" value="0" min="0" readonly>
+                        <button type="button" onclick="changeQuantity('editar-arqInteira', 1)">+</button>
+                    </div>
+    
+                    <label for="editar-arqMeia">Arquibancada | Meia: R$ 40,00</label>
+                    <div class="quantity-container">
+                        <button type="button" onclick="changeQuantity('editar-arqMeia', -1)">-</button>
+                        <input type="number" id="editar-arqMeia" name="arqMeia" value="0" min="0" readonly>
+                        <button type="button" onclick="changeQuantity('editar-arqMeia', 1)">+</button>
+                    </div>
+    
+                    <label for="editar-vipInteira">VIP | Inteira: R$ 200,00</label>
+                    <div class="quantity-container">
+                        <button type="button" onclick="changeQuantity('editar-vipInteira', -1)">-</button>
+                        <input type="number" id="editar-vipInteira" name="vipInteira" value="0" min="0" readonly>
+                        <button type="button" onclick="changeQuantity('editar-vipInteira', 1)">+</button>
+                    </div>
+    
+                    <label for="editar-vipMeia">VIP | Meia: R$ 100,00</label>
+                    <div class="quantity-container">
+                        <button type="button" onclick="changeQuantity('editar-vipMeia', -1)">-</button>
+                        <input type="number" id="editar-vipMeia" name="vipMeia" value="0" min="0" readonly>
+                        <button type="button" onclick="changeQuantity('editar-vipMeia', 1)">+</button>
+                    </div>
+                </div>
+                <button type="submit">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    
+
     <div class="footer">
         <div class="footer-container">
             <img class="img-footer" src="https://vasco.com.br/wp-content/themes/hpmais/assets/images/logo_vasco_2.png">

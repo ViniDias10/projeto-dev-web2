@@ -121,11 +121,14 @@ function renderizarIngressos(elementId) {
             <p><strong>VIP Meia:</strong> ${ingresso.setores.vipMeia}</p>
             <p><strong>Valor Total:</strong> R$ ${total.toFixed(2)}</p>
             <button onclick="excluirIngresso(${index}); fecharPopup();">Cancelar compra</button>
+            <button onclick="editarIngresso(${index});">Editar</button>
+            <button onclick="efetuarPagamento(${index});">Efetuar Pagamento</button>
             <hr>
         `;
         container.appendChild(listItem);
     });
 }
+
 
 // Evento para mostrar os ingressos no popup ao clicar no botão "Listar ingressos"
 document.getElementById('botao-listar').addEventListener('click', function() {
@@ -162,6 +165,7 @@ function changeQuantity(id, delta) {
     input.value = newValue;
 }
 
+
 // Deletar
 function excluirIngresso(index) {
     ingressos.splice(index, 1); // Remove o ingresso da lista
@@ -177,5 +181,46 @@ function renderizarIngressosNormal() {
 }
 
 
+function editarIngresso(index) {
+    const ingresso = ingressos[index];
+    document.getElementById('editar-partida').value = ingresso.partida;
+    document.getElementById('editar-arqInteira').value = ingresso.setores.arqInteira;
+    document.getElementById('editar-arqMeia').value = ingresso.setores.arqMeia;
+    document.getElementById('editar-vipInteira').value = ingresso.setores.vipInteira;
+    document.getElementById('editar-vipMeia').value = ingresso.setores.vipMeia;
+
+    // Mostrar popup de edição
+    document.getElementById('popup-editar').style.display = 'block';
+
+    // Atualizar o ingresso ao salvar
+    document.getElementById('form-editar').onsubmit = function(event) {
+        event.preventDefault();
+        ingresso.partida = document.getElementById('editar-partida').value;
+        ingresso.setores.arqInteira = parseInt(document.getElementById('editar-arqInteira').value);
+        ingresso.setores.arqMeia = parseInt(document.getElementById('editar-arqMeia').value);
+        ingresso.setores.vipInteira = parseInt(document.getElementById('editar-vipInteira').value);
+        ingresso.setores.vipMeia = parseInt(document.getElementById('editar-vipMeia').value);
+        salvarIngressos();
+        alert("Ingresso atualizado com sucesso");
+        fecharPopupEditar();
+        renderizarIngressosNormal();
+    };
+}
+
+
+function fecharPopupEditar() {
+    document.getElementById('popup-editar').style.display = 'none';
+}
+
+
+function fecharPopupEditar() {
+    document.getElementById('popup-editar').style.display = 'none';
+}
+
+function efetuarPagamento(index) {
+    alert("Pagamento efetuado com sucesso para o ingresso " + (index + 1));
+
+
+}
 
 
